@@ -7,8 +7,14 @@ Create a system that sends you an SMS on same pre-set frequency. It asks you a q
 - `pip`
 - `virtualenv`
 - [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/)
+- Postgres 
 
 # Dev Setup
 1. Create a git repository / clone this one
 2. `mkvirtualenv checkin`
 3. `pip install -r requirements.txt`
+4. `createdb checkin_db`
+
+
+# Recommended Tools
+- Postico for a GUI for your postgres DBs
