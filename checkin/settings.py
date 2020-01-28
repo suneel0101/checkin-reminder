@@ -26,7 +26,7 @@ SECRET_KEY = 'w-oq7qz@i^)a^2d&oscs2ovp#x6@-ml&&qq)z_jzgk!3^b)m*6'
 PRODUCTION = os.environ.get('PRODUCTION')
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ['630b3a7a.ngrok.io']
+ALLOWED_HOSTS = ['630b3a7a.ngrok.io', 'checkin-reminder.herokuapp.com']
 
 
 # Application definition
