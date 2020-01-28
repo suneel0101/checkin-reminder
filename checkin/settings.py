@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w-oq7qz@i^)a^2d&oscs2ovp#x6@-ml&&qq)z_jzgk!3^b)m*6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+PRODUCTION = os.environ.get('PRODUCTION')
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ['630b3a7a.ngrok.io']
 
@@ -77,17 +78,20 @@ WSGI_APPLICATION = 'checkin.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'checkin_db',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+if PRODUCTION:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'checkin_db',
+            'USER': 'postgres',
+            'PASSWORD': '',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
