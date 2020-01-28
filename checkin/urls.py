@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ping.views import handle_sms_response
 
 urlpatterns = [
+	path('api/hook/', handle_sms_response, name='handle_sms_response'),
     path('admin/', admin.site.urls),
 ]
