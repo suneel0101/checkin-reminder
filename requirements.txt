@@ -1,2 +1,5 @@
 Django==3.0.2
 psycopg2==2.8.4
+twilio==6.35.3
+freezegun==0.3.14
+pytest-django==3.8.0
