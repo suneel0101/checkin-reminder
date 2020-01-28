@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class PingConfig(models.Model):
@@ -11,6 +12,17 @@ class PingConfig(models.Model):
 
 	def __str__(self):
 		return self.note
+
+	@property
+	def needs_to_be_run(self):
+		if not self.last_run_timestamp:
+			return True
+		# If minutes_interval has transpired since the last run
+		return (
+			((timezone.now() - self.last_run_timestamp).total_seconds() / 60) >
+			self.minutes_interval
+		)
+
 
 
 class Ping(models.Model):
