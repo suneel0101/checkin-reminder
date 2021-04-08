@@ -1,4 +1,4 @@
-Django==3.0.2
+Django==3.0.14
 psycopg2==2.8.4
 twilio==6.35.3
 freezegun==0.3.14
